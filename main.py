@@ -87,7 +87,7 @@ def fetch_details():
         return data
 
     except:
-        print("Corrupt config.json. Download sample config.json from https://github.com/Devanshu19/AScriptThatPostsKonImagesUntilItGetsA100PercentMeanScoreFRFR/blob/5492fb424b92c15ea9fd8ffc271dbdf52ccb30e2/main.py and change its values")
+        print("Corrupt config.json. Download sample config.json from https://github.com/Devanshu19/AScriptThatPostsKonImagesUntilItGetsA100PercentMeanScoreFRFR/blob/4bb2eecef73dfed595b354ddd0b11c27505cdc7b/sampleconfig.json  and change its values")
         return None
 
 def upload_on_catbox(file_extension, image_data):
