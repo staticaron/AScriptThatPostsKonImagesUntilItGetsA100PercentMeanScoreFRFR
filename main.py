@@ -1,6 +1,5 @@
 import requests
 import os
-import sys
 import random
 import catbox
 import json
@@ -75,6 +74,7 @@ def fetch_details():
     try:
         data = {
             "token" : config_file.get("token"),
+            "saucenaotoken" : config_file.get("saucenaotoken"),
             "posted_image_dir" : config_file.get("posted_image_dir"),
             "unposted_image_dir" : config_file.get("unposted_image_dir"),
             "progress" : int(config_file.get("progress")),
@@ -113,7 +113,12 @@ async def find_sauce(details, image_url):
 
     print("Finding Pixiv Source...")
 
-    sauce_finder = SauceNao(priority=[5, 6], api_key=details.get("saucenaotoken"))
+    api_key = details.get("saucenaotoken")
+
+    if api_key == "":
+        return None
+
+    sauce_finder = SauceNao(priority=[5, 6], api_key=api_key)
 
     results = await sauce_finder.from_url(image_url)
 
@@ -135,6 +140,11 @@ async def find_sauce(details, image_url):
 def create_anilist_post(details, variables) -> bool:
     
     print("Creating Post on Anilist .....")
+
+    if details.get("token") == "":
+        print("No valid anilist Token!")
+        print()
+        return False
 
     try:
         requests.post(

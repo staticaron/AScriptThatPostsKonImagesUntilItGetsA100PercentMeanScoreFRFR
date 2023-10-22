@@ -1,7 +1,7 @@
 {
     "token": "",
     "saucenaotoken": "",
-    "posted_image_dir": "images/posted/",
+    "posted_image_dir": "images/already_posted/",
     "unposted_image_dir": "images/",
     "progress": 1204,
     "use_file_name": false
